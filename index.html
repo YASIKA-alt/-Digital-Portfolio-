@@ -1,198 +1,233 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Portfolio</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>yasika's Portfolio</title>
     <style>
+        /* General Styles */
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #84a6e9;
+            background: linear-gradient(120deg, #4B0082, #8A2BE2, #9370DB); /* Matte purple gradient */
+            color: #ffffff; /* White text */
         }
 
-        header {
-            background-color: #941919;
-            color: #fff;
-            text-align: center;
-            padding: 2rem 0;
-            position: relative; /* Add this */
-        }
-
-        .header-content h1 {
-            font-size: 2.5rem;
-        }
-
-        /* Add styles for the round profile picture */
-        .profile-picture {
-            width: 100px; /* Adjust the size as needed */
-            height: 100px;
-            border-radius: 75%; /* Create a circular shape */
-            object-fit: cover; /* To ensure the image fills the circular area */
-            position: absolute; /* Add this */
-            top: 75px; /* Adjust top position as needed */
-            left: 75px; /* Adjust left position as needed */
-        }
-
+        /* Navigation Bar */
         nav {
-            background-color: #333;
-            color: #fff;
-            text-align: center;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: #6A0DAD; /* Rich purple */
+            color: white;
+            display: flex;
+            justify-content: center;
+            padding: 1rem 0;
+            box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            z-index: 1000;
+            transition: background-color 0.3s ease-in-out;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.1rem;
+            transition: color 0.3s ease-in-out;
+        }
+        nav a:hover {
+            color: #D8BFD8; /* Thistle hover effect */
         }
 
-        nav ul {
-            list-style-type: none;
+        /* Header Section */
+        header {
+            background: #8A2BE2; /* Bright purple */
+            color: #ffffff; /* White text */
+            text-align: center;
+            padding: 5rem 1rem;
+            transition: all 0.3s ease-in-out;
+        }
+        header img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 3px solid #ffffff; /* White border */
+            margin-bottom: 1rem;
+        }
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+        header p {
+            font-size: 1.5rem;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        /* Sections */
+        section {
+            background: #9370DB; /* Light purple background */
+            margin: 3rem 0;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 20px 6px rgba(0, 0, 0, 0.1); /* Soft shadow */
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+        section:hover {
+            transform: translateY(-5px); /* Smooth elevation on hover */
+            box-shadow: 0 10px 2px rgba(0, 0, 0, 0.15);
+        }
+        section h2 {
+            margin-bottom: 1rem;
+            color: #ffffff; /* White text */
+            text-transform: uppercase;
+            font-size: 1.5rem;
+            letter-spacing: 1px;
+        }
+
+        /* Skills and Projects List */
+        ul {
+            list-style: none;
             padding: 0;
         }
-
-        nav ul li {
-            display: inline;
-            margin: 0 20px;
+        li {
+            background: #D8BFD8; /* Thistle for items */
+            margin-bottom: 1rem;
+            padding: 1rem;
+            border-radius: 5px;
+            box-shadow: 0 10px 6px rgba(0, 0, 0, 0.1);
+            transition: background 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+        li:hover {
+            background: #DDA0DD; /* Plum hover effect */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
         }
 
-        nav ul li a {
-            text-decoration: none;
-            color: #fff;
+        /* Contact Section */
+        .contact-info p {
+            margin: 0.5rem 0;
         }
 
-        .section-content {
-            background-color: #fff;
-            padding: 2rem;
-            margin: 1rem;
-            border-radius: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            text-align: justify;
-        }
-
-        .download-button {
-            background-color: #333;
-            color: #fff;
-            padding: 0.5rem 1rem;
-            text-decoration: none;
-            border-radius: 20px;
-            display: inline-block;
-            margin-top: 10px;
-            align-self: center;
-        }
-
-        .download-button:hover {
-            background-color: #555;
-        }
-
+        /* Footer */
         footer {
             text-align: center;
             padding: 1rem 0;
-            background-color: #333;
-            color: #fff;
+            background: #6A0DAD; /* Same rich purple as the navigation bar */
+            color: #ffffff; /* White text */
+            margin-top: 2rem;
+            transition: all 0.3s ease-in-out;
         }
 
-        ul {
-            list-style-type: disc;
-            padding-left: 20px;
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5rem;
+            }
+            header p {
+                font-size: 1.2rem;
+            }
+            nav a {
+                font-size: 1rem;
+                margin: 0 10px;
+            }
         }
     </style>
 </head>
 <body>
-    <header>
-        <div class="header-content">
-            <!-- Add your profile picture here -->
-           <l><img src="yasika.jpg" alt="yasika" class="profile-picture"></l>
-            <h1>YASIKA N</h1>
-                  <p>BSc Computer Science</p>
-        </div>
-            </header>
 
+    <!-- Navigation Bar -->
     <nav>
-        <ul>
-            <li><a href="#about">About</a></li>
-            <li><a href="#education">Education</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#resume">Resume</a></li>
-
-        </ul>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
     </nav>
 
-    <section id="about">
-        <div class="section-content">
+    <!-- Header Section -->
+    <header>
+        <img src="profile.jpg" alt="Yashika's Photo">
+        <h1>yasika's Portfolio</h1>
+        <p>Aspiring Computer Scientist | Problem Solver | Web Developer</p>
+    </header>
+
+    <div class="container">
+
+        <!-- About Section -->
+        <section id="about">
             <h2>About Me</h2>
-            <p>I'm a <b>Computer Science</b> currently pursuing my degree at[TAGORE COLLEGE OF ARTS AND SCIENCE]in the Faculty of Arts and Science 
-            with a Strong foundation in programming, algorithms and data structure,I am eager to apply my technical skills and analytical mindset to real-world problems
-            I have developed a keen interest in chennai and am eager to contributes to innovative projects and gain hands-on experience in the tech industry</p>
+            <p>Hello! I'm yasika, a computer science student with a passion for solving problems and developing innovative solutions. My interests include artificial intelligence, web development, and competitive programming.</p>
+        </section>
 
-        </div>
-    </section>
-
-    <section id="education">
-        <div class="section-content">
-            <h2>Education</h2>
-            <p>MEDRAS UNIVERSITY -CHENNAI</p>
-
-
-        </div>
-    </section>
-
-    <section id="skills">
-        <div class="section-content">
+        <!-- Skills Section -->
+        <section id="skills">
             <h2>Skills</h2>
             <ul>
-                <li>python</li>
-                <li>java</li>
-                <li>Cloud Computing</li>
-                <li>css</li>
-                <li>Spring</li>
-                <li>ML & AI</li>
-                <li>java</li>
-                <li>c++</li>
-                <li>Java script</li>
+                <li><strong>Programming Languages:</strong> Python, Java, C++</li>
+                <li><strong>Web Technologies:</strong> HTML, CSS, JavaScript</li>
+                <li><strong>Database Management:</strong> MySQL, MongoDB</li>
+                <li><strong>Tools & Platforms:</strong> Git, Docker, AWS</li>
             </ul>
-        </div>
-    </section>
+        </section>
 
-    <section id="projects">
-        <div class="section-content">
+        <!-- Projects Section -->
+        <section id="projects">
             <h2>Projects</h2>
             <ul>
-                <li><a href="E Cart website.html">E Cart website</a></li>
-                <li><a href="Cloud Security.html">Cloud Security IBM</a></li>
-                <li><a href="index.html">index</a></li>
-                <li><a href="College portal.html">College Portal</a></li> 
-                <!-- Add more project links here -->
+                <li>
+                    <strong>AI Chatbot:</strong>
+                    <p>Developed a chatbot using Python and Flask, capable of handling customer queries and providing intelligent responses.</p>
+                    <a href="https://github.com/antonyproject1" target="_blank">View on GitHub</a>
+                </li>
+                <li>
+                    <strong>Task Management App:</strong>
+                    <p>Created a task management application with React and Node.js, featuring user authentication and a responsive design.</p>
+                    <a href="https://github.com/antonyproject2" target="_blank">View on GitHub</a>
+                </li>
             </ul>
-        </div>
-    </section>
+        </section>
 
-    <section id="resume">
+        <!-- Contact Section -->
+        <section id="contact">
+            <h2>Contact</h2>
+            <div class="contact-info">
+                <p><strong>Email:</strong> yasika.n21606gmail.com</p>
+                <p><strong>GitHub:</strong> <a href="https://github.com/YASIKA-alt" target="_blank">github.com/antony</a></p>
+                <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/YASIKA-alt" target="_blank">linkedin.com/in/antony</a></p>
+            </div>
+        </section>
+  <!-- Download Button -->
+    <section id="download" class="section">
+    <center><h4>Download My Resume 📜</h4>
+    <a href="Yasika1.jpg" download class="download-button">Download 📥</a>
+</section>
+    </div>
 
-        <div class="section-content">
-            <center>
-            <h2>Resume</h2>
-            <a href="yas.jpg" target="_blank" class="download-button">Download CV</a>
-        </center>
-        </div>
-
-    </section>
-
+    <!-- Footer -->
     <footer>
-        <p>&copy; 2025 YASIKA N</p>
+        <p>© 2025 yashika's Portfolio | All Rights Reserved</p>
     </footer>
 
-    <script>
-        // Smooth scrolling to section when clicking on navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-
-                const targetId = this.getAttribute('href').substring(1);
-                const targetElement = document.getElementById(targetId);
-
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-    </script>
 </body>
 </html>
